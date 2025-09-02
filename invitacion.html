@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Invitación Cumpleaños Tina - Haras del Sol</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        .invitation-container {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .invitation-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #27ae60, #3498db, #9b59b6);
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .photo-section {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .birthday-photo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .birthday-photo:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-frame {
+            position: relative;
+            display: inline-block;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12, #f1c40f, #27ae60);
+            border-radius: 25px;
+            z-index: -1;
+            animation: rainbow-border 4s linear infinite;
+        }
+
+        .event-details {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-date {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+
+        .event-location {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .event-time {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(52, 73, 94, 0.1);
+            border-radius: 15px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .rsvp {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.1rem;
+        }
+
+        .decorations {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .decorations.left {
+            left: 20px;
+            right: auto;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes rainbow-border {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #f1c40f;
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .invitation-container {
+                margin: 20px;
+                padding: 25px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .event-date {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="invitation-container">
+        <div class="decorations">🎂</div>
+        <div class="decorations left">🎉</div>
+        
+        <div class="header">
+            <h1 class="title">¡Feliz Cumpleaños!</h1>
+            <div class="subtitle">Tina</div>
+        </div>
+        
+        <div class="photo-section">
+            <div class="photo-frame">
+                <img src="Tinicumpleanios.PNG" alt="Tina" class="birthday-photo">
+            </div>
+        </div>
+        
+        <div class="event-details">
+            <div class="event-date">01 de Febrero, 2026</div>
+            <div class="event-location">📍 Haras del Sol</div>
+            <div class="event-time">⏰ ¡Celebración todo el día!</div>
+        </div>
+        
+        <div class="message">
+            <p>¡Te invitamos a celebrar este día tan especial!</p>
+            <p>Será una fiesta llena de alegría, caricias y muchas golosinas.</p>
+            <p>¡No faltes a la celebración de la perrita más adorable!</p>
+        </div>
+        
+        <div class="rsvp">
+            <strong>🎯 Confirmar asistencia:</strong><br>
+            ¡Solo necesitas estar presente y listo para celebrar!
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 1.1rem; color: #7f8c8d;">
+            <p>🎁 Trae tu mejor disposición para jugar</p>
+            <p>🐾 Y muchas ganas de pasarla genial</p>
+        </div>
+    </div>
+
+    <script>
+        // Crear efectos de brillos
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const sparkleCount = 30;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+
+        // Crear confeti al hacer clic
+        function createConfetti() {
+            const colors = ['#e74c3c', '#f39c12', '#f1c40f', '#27ae60', '#3498db', '#9b59b6'];
+            
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '8px';
+                confetti.style.height = '8px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-8px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '1000';
+                
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(0px) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Inicializar efectos
+        document.addEventListener('DOMContentLoaded', () => {
+            createSparkles();
+            
+            // Crear confeti al hacer clic
+            document.addEventListener('click', createConfetti);
+            
+            // Crear confeti automáticamente cada 5 segundos
+            setInterval(createConfetti, 5000);
+        });
+    </script>
+</body>
+</html>
