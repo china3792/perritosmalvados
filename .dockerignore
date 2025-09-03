@@ -1,0 +1,42 @@
+# Archivos de Git
+.git
+.gitignore
+
+# Archivos de Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Archivos de documentación (mantener README.md para la aplicación)
+# README.md
+
+# Archivos temporales
+*.tmp
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de Node.js (si los hubiera)
+node_modules/
+npm-debug.log*
+
+# Archivos de Python (si los hubiera)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Archivos de backup
+*.bak
+*.backup

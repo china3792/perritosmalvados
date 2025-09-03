@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Servicio principal de la aplicación web
+  web:
+    build: .
+    container_name: perritos-malvados-web
+    ports:
+      - "8080:80"  # Puerto local:puerto contenedor
+    restart: unless-stopped
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    volumes:
+      # Volumen para logs (opcional)
+      - ./logs:/var/log/nginx
+    networks:
+      - perritos-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Servicio opcional: Nginx con configuración personalizada
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: perritos-nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-proxy.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+    networks:
+      - perritos-network
+    profiles:
+      - production  # Solo se ejecuta con --profile production
+
+networks:
+  perritos-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
